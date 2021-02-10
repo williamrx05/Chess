@@ -26,10 +26,11 @@ class Pawn(ChessPiece.ChessPiece):
 
     def validmoves(self, chessboard: ChessBoard) -> [list]:
         moves = []
-        left = move.move(self.pos, -1, self.side)
-        right = move.move(self.pos, 1, self.side)
-        onestep = move.move(self.pos, 0, self.side)
-        twostep = move.move(self.pos, 0, 2*self.side)
+        t = (self.pos.gety() == 1 and self.side == -1) or (self.pos.gety() == 6 and self.side == 1)
+        left = move.move(self.pos, -1, self.side, t)
+        right = move.move(self.pos, 1, self.side, t)
+        onestep = move.move(self.pos, 0, self.side, t)
+        twostep = move.move(self.pos, 0, 2*self.side, False)
         if self.ismovevalid(left, chessboard):
             moves.append(left)
         if self.ismovevalid(right, chessboard):

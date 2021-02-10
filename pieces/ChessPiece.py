@@ -7,10 +7,10 @@ class ChessPiece:
         self.pos = pos
         self.value = value
 
-    def ismovevalid(self, m, chessboard):
+    def ismovevalid(self, m, chessboard) -> bool:
         pass
 
-    def validmoves(self, chessboard):
+    def validmoves(self, chessboard) -> [move]:
         pass
 
     def getvalue(self):
