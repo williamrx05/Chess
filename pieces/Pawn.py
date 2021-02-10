@@ -24,7 +24,7 @@ class Pawn(ChessPiece.ChessPiece):
                 return not not temp and temp.getside() == -self.side
         return False
 
-    def validmoves(self, chessboard: ChessBoard) -> [list]:
+    def validmoves(self, chessboard: ChessBoard) -> [move]:
         moves = []
         t = (self.pos.gety() == 1 and self.side == -1) or (self.pos.gety() == 6 and self.side == 1)
         left = move.move(self.pos, -1, self.side, t)

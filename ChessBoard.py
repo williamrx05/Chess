@@ -30,7 +30,7 @@ class ChessBoard:
                 pos = position.position(x, y)
                 temp = self.pieceat(pos)
                 if not temp:
-                    print(" 0X ", end='')
+                    print(" " + str(x) + str(y) + " ", end='')
                 else:
                     s = "-" if temp.side < 0 else "+"
                     print(" " + s + temp.getname() + " ", end='')
