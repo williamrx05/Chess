@@ -50,7 +50,9 @@ class ChessBoard:
                         m2 = move.move(pos, temp.getking(side), False)
                         if temp.movepiece(m2, "None"):
                             return True
-        return False
+            return False
+        else:
+            return True
 
     def ischeckmate(self, turn: int) -> bool:
         for x in range(8):
@@ -77,8 +79,10 @@ class ChessBoard:
                 newpiece = Knight.Knight(piece.getside(), m.getnew())
             elif new == "R":
                 newpiece = Rook.Rook(piece.getside(), m.getnew())
-            else:
+            elif new == "B":
                 newpiece = Bishop.Bishop(piece.getside(), m.getnew())
+            else:
+                newpiece = Pawn.Pawn(piece.getside(), m.getnew()) # temporary uses only
             self.pieces[m.getnew().gety()][m.getnew().getx()] = newpiece
         else:
             self.pieces[piece.getpos().gety()][piece.getpos().getx()] = None
@@ -112,7 +116,8 @@ class ChessBoard:
                 pos = position.position(x, y)
                 temp = self.pieceat(pos)
                 if not temp:
-                    print(" " + str(x) + str(y) + " ", end='')
+                    # print(" " + str(x) + str(y) + " ", end='')
+                    print(" `` ", end='')
                 else:
                     s = "-" if temp.side < 0 else "+"
                     print(" " + s + temp.getname() + " ", end='')
