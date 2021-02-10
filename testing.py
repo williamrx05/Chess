@@ -46,7 +46,12 @@ board1.printboard()
 # print("new")
 # newboard.printboard()
 
+# movequeen = move.move(position10, 0, -3, False)
+# print(board1.ischeckmate(1))
 
+# board1.movepiece(movequeen)
+# board1.printboard()
+# print(board1.ischeckmate(1))
 # #
 # movequeen = move.move(position11, 5, 0, False)
 # print(board1.movepiece(movequeen, "None"))

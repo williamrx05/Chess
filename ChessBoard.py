@@ -52,10 +52,18 @@ class ChessBoard:
                             return True
         return False
 
-    def ischeckmate(self, m: move) -> bool:
-        return False
+    def ischeckmate(self, turn: int) -> bool:
+        for x in range(8):
+            for y in range(8):
+                pos = position.position(x, y)
+                piece = self.pieceat(pos)
+                if piece and piece.getside() == turn:
+                    for m2 in piece.validmoves(self):
+                        if not self.iskingopen(m2):
+                            return False
+        return True
 
-    def movepiece(self, m: move, new: str):
+    def movepiece(self, m: move, new="None"):
         piece: ChessPiece = self.pieceat(m.getold())
         if not piece or not piece.ismovevalid(m, self):
             return False
