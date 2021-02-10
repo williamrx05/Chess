@@ -18,8 +18,8 @@ class Rook(ChessPiece.ChessPiece):
             stepx = int(m.xshift()/abs(m.xshift()))
         else:
             stepy = int(m.yshift()/abs(m.yshift()))
-        for i in range(1, abs(max(stepx, stepy))):
-            pos = position.positino(m.getold().getx() + i*stepx, m.getold().gety() + i*stepy)
+        for i in range(1, max(abs(m.xshift()), abs(m.yshift()))):
+            pos = position.position(m.getold().getx() + i*stepx, m.getold().gety() + i*stepy)
             temp = chessboard.pieceat(pos)
             if not not temp:
                 return False

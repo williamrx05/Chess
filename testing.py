@@ -1,5 +1,5 @@
 import ChessBoard, position, move
-from pieces import ChessPiece, Pawn, King, Knight, Bishop, Rook
+from pieces import ChessPiece, Pawn, King, Knight, Bishop, Rook, Queen
 
 position1 = position.position(1, 1)
 position2 = position.position(0, 1)
@@ -10,6 +10,7 @@ position6 = position.position(4, 4)
 position7 = position.position(2, 5)
 position8 = position.position(3, 5)
 position9 = position.position(0, 5)
+position10 = position.position(3, 3)
 board1 = ChessBoard.ChessBoard()
 pawn1 = Pawn.Pawn(1, position1)
 pawn2 = Pawn.Pawn(-1, position2)
@@ -19,6 +20,7 @@ king2 = King.King(1, position6)
 knight1 = Knight.Knight(1, position7)
 bishop1 = Bishop.Bishop(-1, position8)
 rook1 = Rook.Rook(-1, position9)
+queen1 = Queen.Queen(-1, position10)
 board1.addpiece(pawn1)
 board1.addpiece(pawn2)
 board1.addpiece(pawn3)
@@ -27,12 +29,18 @@ board1.addpiece(king2)
 board1.addpiece(knight1)
 board1.addpiece(bishop1)
 board1.addpiece(rook1)
+board1.addpiece(queen1)
 board1.printboard()
-print("Rook1 moves")
-rook1moves = rook1.validmoves(board1)
-for m in rook1moves:
+
+print("Queen1 moves")
+queen1moves = queen1.validmoves(board1)
+for m in queen1moves:
     print(m.text())
 
+# print("Rook1 moves")
+# rook1moves = rook1.validmoves(board1)
+# for m in rook1moves:
+#     print(m.text())
 #pawn1moves = pawn1.validmoves(board1)
 # print("Pawn1 moves")
 # for m in pawn1moves:

@@ -8,7 +8,7 @@ class Bishop(ChessPiece.ChessPiece):
     def ismovevalid(self, m: move, chessboard: ChessBoard) -> bool:
         if chessboard.iskingopen(m) or not chessboard.inbounds(m.getnew()):
             return False
-        if m.xshift() == 0:
+        if m.xshift() == 0 or abs(m.xshift()) != abs(m.yshift()):
             return False
         x = int(m.xshift()/abs(m.xshift()))
         y = int(m.yshift()/abs(m.yshift()))
