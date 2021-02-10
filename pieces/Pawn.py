@@ -6,7 +6,7 @@ class Pawn(ChessPiece.ChessPiece):
         super().__init__("P", side, pos, 1)
 
     def ismovevalid(self, m: move, chessboard: ChessBoard) -> bool:
-        if chessboard.iskingopen(m) or not chessboard.inbounds(m.getnew()):
+        if not chessboard.inbounds(m.getnew()):
             return False
 
         if m.xshift() == 0:

@@ -6,7 +6,7 @@ class King(ChessPiece.ChessPiece):
         super().__init__("K", side, pos, 999)
 
     def ismovevalid(self, m, chessboard) -> bool:
-        if chessboard.iskingopen(m) or not chessboard.inbounds(m.getnew()):
+        if not chessboard.inbounds(m.getnew()):
             return False
         if -1 <= m.xshift() <= 1 and -1 <= m.yshift() <= 1:
             temp = chessboard.pieceat(m.getnew())

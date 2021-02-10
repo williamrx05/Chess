@@ -7,6 +7,12 @@ class ChessPiece:
         self.pos = pos
         self.value = value
 
+    def setpos(self, pos: position):
+        self.pos = pos
+
+    def setside(self, side: int):
+        self.side = side
+
     def ismovevalid(self, m, chessboard) -> bool:
         pass
 

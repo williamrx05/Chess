@@ -6,7 +6,7 @@ class Knight(ChessPiece.ChessPiece):
         super().__init__("H", side, pos, 3)
 
     def ismovevalid(self, m, chessboard) -> bool:
-        if chessboard.iskingopen(m) or not chessboard.inbounds(m.getnew()):
+        if not chessboard.inbounds(m.getnew()):
             return False
         if (abs(m.xshift()) == 2 and abs(m.yshift()) == 1) or (abs(m.xshift()) == 1 and abs(m.yshift()) == 2):
             temp = chessboard.pieceat(m.getnew())

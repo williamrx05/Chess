@@ -11,12 +11,13 @@ position7 = position.position(2, 5)
 position8 = position.position(3, 5)
 position9 = position.position(0, 5)
 position10 = position.position(3, 3)
+position11 = position.position(2, 7)
 board1 = ChessBoard.ChessBoard()
 pawn1 = Pawn.Pawn(1, position1)
 pawn2 = Pawn.Pawn(-1, position2)
 pawn3 = Pawn.Pawn(1, position3)
 king1 = King.King(1, position5)
-king2 = King.King(1, position6)
+# king2 = King.King(1, position6)
 knight1 = Knight.Knight(1, position7)
 bishop1 = Bishop.Bishop(-1, position8)
 rook1 = Rook.Rook(-1, position9)
@@ -25,18 +26,51 @@ board1.addpiece(pawn1)
 board1.addpiece(pawn2)
 board1.addpiece(pawn3)
 board1.addpiece(king1)
-board1.addpiece(king2)
+# board1.addpiece(king2)
 board1.addpiece(knight1)
 board1.addpiece(bishop1)
 board1.addpiece(rook1)
 board1.addpiece(queen1)
 board1.printboard()
 
-print("Queen1 moves")
-queen1moves = queen1.validmoves(board1)
-for m in queen1moves:
-    print(m.text())
+# memo = {}
+# newboard = board1.__deepcopy__(memo)
+# print("new")
+# newboard.printboard()
 
+# movepawn = move.move(position3, 1, 1, True)
+# print(board1.iskingopen(movepawn))
+# print(board1.movepiece(movepawn, "Q"))
+# print("old")
+# board1.printboard()
+# print("new")
+# newboard.printboard()
+
+
+# #
+# movequeen = move.move(position11, 5, 0, False)
+# print(board1.movepiece(movequeen, "None"))
+# board1.printboard()
+#
+# move1 = move.move(position10, -2, -2, False)
+# print(board1.movepiece(move1, "None"))
+# board1.printboard()
+#
+# move2 = move.move(position1, 0, 1, False)
+# print(board1.iskingopen(move2))
+
+# board1.printboard()
+#
+# move3 = move.move(position5, 0, 1, False)
+# print(board1.iskingopen(move3))
+# print(board1.movepiece(move3, "None"))
+
+# board1.printboard()
+
+# print("Queen1 moves")
+# queen1moves = queen1.validmoves(board1)
+# for m in queen1moves:
+#     print(m.text())
 # print("Rook1 moves")
 # rook1moves = rook1.validmoves(board1)
 # for m in rook1moves:
