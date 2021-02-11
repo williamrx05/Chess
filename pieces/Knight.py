@@ -15,14 +15,14 @@ class Knight(ChessPiece.ChessPiece):
 
     def validmoves(self, chessboard) -> [move]:
         moves = []
-        ul = move.move(self.pos, -1, 2, False)
-        ur = move.move(self.pos, 1, 2, False)
-        ru = move.move(self.pos, 2, 1, False)
-        rd = move.move(self.pos, 2, -1, False)
-        dr = move.move(self.pos, 1, -2, False)
-        dl = move.move(self.pos, -1, -2, False)
-        ld = move.move(self.pos, -2, -1, False)
-        lu = move.move(self.pos, -2, 1, False)
+        ul = move.move(self.pos, -1, 2, False, "None")
+        ur = move.move(self.pos, 1, 2, False, "None")
+        ru = move.move(self.pos, 2, 1, False, "None")
+        rd = move.move(self.pos, 2, -1, False, "None")
+        dr = move.move(self.pos, 1, -2, False, "None")
+        dl = move.move(self.pos, -1, -2, False, "None")
+        ld = move.move(self.pos, -2, -1, False, "None")
+        lu = move.move(self.pos, -2, 1, False, "None")
         if self.ismovevalid(ul, chessboard):
             moves.append(ul)
         if self.ismovevalid(ur, chessboard):

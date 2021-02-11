@@ -16,14 +16,14 @@ class King(ChessPiece.ChessPiece):
 
     def validmoves(self, chessboard) -> [move]:
         moves = []
-        right = move.move(self.pos, 1, 0, False)
-        left = move.move(self.pos, -1, 0, False)
-        up = move.move(self.pos, 0, 1, False)
-        down = move.move(self.pos, 0, -1, False)
-        topright = move.move(self.pos, 1, 1, False)
-        topleft = move.move(self.pos, -1, 1, False)
-        bottomright = move.move(self.pos, 1, -1, False)
-        bottomleft = move.move(self.pos, -1, -1, False)
+        right = move.move(self.pos, 1, 0, False, "None")
+        left = move.move(self.pos, -1, 0, False, "None")
+        up = move.move(self.pos, 0, 1, False, "None")
+        down = move.move(self.pos, 0, -1, False, "None")
+        topright = move.move(self.pos, 1, 1, False, "None")
+        topleft = move.move(self.pos, -1, 1, False, "None")
+        bottomright = move.move(self.pos, 1, -1, False, "None")
+        bottomleft = move.move(self.pos, -1, -1, False, "None")
         if self.ismovevalid(left, chessboard):
             moves.append(left)
         if self.ismovevalid(right, chessboard):

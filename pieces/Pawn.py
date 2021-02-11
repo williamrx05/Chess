@@ -27,16 +27,24 @@ class Pawn(ChessPiece.ChessPiece):
     def validmoves(self, chessboard: ChessBoard) -> [move]:
         moves = []
         t = (self.pos.gety() == 1 and self.side == -1) or (self.pos.gety() == 6 and self.side == 1)
-        left = move.move(self.pos, -1, self.side, t)
-        right = move.move(self.pos, 1, self.side, t)
-        onestep = move.move(self.pos, 0, self.side, t)
-        twostep = move.move(self.pos, 0, 2*self.side, False)
-        if self.ismovevalid(left, chessboard):
-            moves.append(left)
-        if self.ismovevalid(right, chessboard):
-            moves.append(right)
-        if self.ismovevalid(onestep, chessboard):
-            moves.append(onestep)
+        changes = ["Q", "H", "B", "R"]
+        left = []
+        right = []
+        onestep = []
+        for change in changes:
+            left.append(move.move(self.pos, -1, self.side, t, change))
+        for change in changes:
+            right.append(move.move(self.pos, 1, self.side, t, change))
+        for change in changes:
+            onestep.append(move.move(self.pos, 0, self.side, t, change))
+        twostep = move.move(self.pos, 0, 2*self.side, False, "None")
+        for i in range(3):
+            if self.ismovevalid(left[i], chessboard):
+                moves.append(left[i])
+            if self.ismovevalid(right[i], chessboard):
+                moves.append(right[i])
+            if self.ismovevalid(onestep[i], chessboard):
+                moves.append(onestep[i])
         if self.ismovevalid(twostep, chessboard):
             moves.append(twostep)
         return moves

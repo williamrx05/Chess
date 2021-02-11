@@ -7,6 +7,9 @@ class ChessPiece:
         self.pos = pos
         self.value = value
 
+    def getvalue(self):
+        return self.value
+
     def setpos(self, pos: position):
         self.pos = pos
 

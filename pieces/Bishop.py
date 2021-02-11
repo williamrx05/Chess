@@ -26,25 +26,25 @@ class Bishop(ChessPiece.ChessPiece):
     def validmoves(self, chessboard: ChessBoard) -> [move]:
         moves = []
         for i in range(1, 9):
-            m = move.move(self.pos, i, i, False)
+            m = move.move(self.pos, i, i, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:
                 break
         for i in range(1, 9):
-            m = move.move(self.pos, -i, i, False)
+            m = move.move(self.pos, -i, i, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:
                 break
         for i in range(1, 9):
-            m = move.move(self.pos, i, -i, False)
+            m = move.move(self.pos, i, -i, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:
                 break
         for i in range(1, 9):
-            m = move.move(self.pos, -i, -i, False)
+            m = move.move(self.pos, -i, -i, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:

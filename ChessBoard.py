@@ -1,6 +1,7 @@
 import move, position
 from pieces import ChessPiece, Queen, King, Knight, Pawn, Rook, Bishop
 
+
 class ChessBoard:
     def __init__(self):
         self.pieces = [[0 for _ in range(8)] for _ in range(8)]
@@ -39,7 +40,7 @@ class ChessBoard:
     def iskingopen(self, m: move) -> bool:
         memo = {}
         temp = self.__deepcopy__(memo)
-        if temp.movepiece(m, "None"):
+        if temp.movepiece(m):
             side = temp.pieceat(m.getnew()).getside()
             for x in range(8):
                 for y in range(8):
@@ -47,8 +48,8 @@ class ChessBoard:
                     piece = temp.pieceat(pos)
                     if piece and not piece.getname() == "K" and piece.getside() == -side:
                         pos = piece.getpos()
-                        m2 = move.move(pos, temp.getking(side), False)
-                        if temp.movepiece(m2, "None"):
+                        m2 = move.move(pos, temp.getking(side), False, "None")
+                        if temp.movepiece(m2):
                             return True
             return False
         else:
@@ -65,14 +66,15 @@ class ChessBoard:
                             return False
         return True
 
-    def movepiece(self, m: move, new="None"):
+    def movepiece(self, m: move, forced=False):
         piece: ChessPiece = self.pieceat(m.getold())
-        if not piece or not piece.ismovevalid(m, self):
+        if not forced and (not piece or not piece.ismovevalid(m, self)):
             return False
 
         if m.gett():
             self.pieces[piece.getpos().gety()][piece.getpos().getx()] = None
             newpiece = None
+            new = m.getname()
             if new == "Q":
                 newpiece = Queen.Queen(piece.getside(), m.getnew())
             elif new == "H":

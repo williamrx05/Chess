@@ -6,14 +6,21 @@ class move:
     #     self.t = t
 
     def __init__(self, *args):
-        if len(args) == 4:
+        if len(args) == 5:
             self.old = args[0]
             self.new = position.position(args[0].getx() + args[1], args[0].gety() + args[2])
             self.t = args[3]
-        elif len(args) == 3:
+        elif len(args) == 4:
             self.old = args[0]
             self.new = args[1]
             self.t = args[2]
+        if self.t:
+            self.name = args[len(args) - 1]
+        else:
+            self.name = "None"
+
+    def getname(self) -> str:
+        return self.name
 
     def xshift(self):
         return self.new.getx() - self.old.getx()

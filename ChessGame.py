@@ -54,9 +54,9 @@ class ChessGame:
                         if len(cmd) >= 5:
                             if cmd[4] == "Q" or cmd[4] == "R" or cmd[4] == "B" or cmd[4] == "H":
                                 pos2 = position.position(int(cmd[2]), int(cmd[3]))
-                                m = move.move(pos1, pos2, True)
+                                m = move.move(pos1, pos2, True, cmd[4])
                                 if self.ismovevalid(m):
-                                    self.makemove(m, cmd[4])
+                                    self.makemove(m)
                                     self.printboard()
                                     self.switchturn()
                                     if self.board.ischeckmate(self.turn):
@@ -72,7 +72,7 @@ class ChessGame:
                             print("Must specify Q/R/B/H")
                     else:
                         pos2 = position.position(int(cmd[2]), int(cmd[3]))
-                        m = move.move(pos1, pos2, False)
+                        m = move.move(pos1, pos2, False, "None")
                         if self.ismovevalid(m):
                             self.makemove(m)
                             self.printboard()
@@ -86,12 +86,6 @@ class ChessGame:
                             print("Move is invalid")
                 else:
                     print("Move cannot be parsed")
-
-    def generateboards(self, m: [move]):
-        pass
-
-    def generateboard(self, m: move):
-        pass
 
     # Returns all possible moves for one player
     def allmoves(self, side: int) -> [move]:
@@ -112,13 +106,17 @@ class ChessGame:
                 moves.append(m)
         return moves
 
+    # Returns chess board
+    def getboard(self):
+        return self.board
+
     # Returns whether or not a move is valid
     def ismovevalid(self, m: move) -> bool:
         return not self.board.iskingopen(m)
 
     # Makes a move on board
-    def makemove(self, m: move, new: str = "None"):
-        self.board.movepiece(m, new)
+    def makemove(self, m: move, forced=False):
+        self.board.movepiece(m, forced)
 
     # Switches turns
     def switchturn(self):
@@ -127,3 +125,6 @@ class ChessGame:
     # Prints the chessboard
     def printboard(self):
         self.board.printboard()
+
+    def getturn(self) -> int:
+        return self.turn

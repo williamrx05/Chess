@@ -29,25 +29,25 @@ class Rook(ChessPiece.ChessPiece):
     def validmoves(self, chessboard: ChessBoard) -> [move]:
         moves = []
         for i in range(1, 9):
-            m = move.move(self.pos, i, 0, False)
+            m = move.move(self.pos, i, 0, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:
                 break
         for i in range(1, 9):
-            m = move.move(self.pos, -i, 0, False)
+            m = move.move(self.pos, -i, 0, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:
                 break
         for i in range(1, 9):
-            m = move.move(self.pos, 0, i, False)
+            m = move.move(self.pos, 0, i, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:
                 break
         for i in range(1, 9):
-            m = move.move(self.pos, 0, -i, False)
+            m = move.move(self.pos, 0, -i, False, "None")
             if self.ismovevalid(m, chessboard):
                 moves.append(m)
             else:
