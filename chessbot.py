@@ -34,10 +34,11 @@ def max_value(s: ChessGame.ChessGame, d: int=depth_max):
         return value(s.getboard())
     for action in tg.allmoves(1):
         prev = v
-        v = max(v, min_value(result(tg, action), d))
+        m = min_value(result(tg, action), d)
+        v = max(v, m)
         if not prev == v or not current:
             current = action
-        if decision(0.2) and prev == v:
+        if decision(0.2) and m == v:
             current = action
     if d == depth_max - 1:
         game.makemove(current, True)
@@ -55,10 +56,11 @@ def min_value(s: ChessGame.ChessGame, d: int=depth_min):
         return value(s.getboard())
     for action in tg.allmoves(-1):
         prev = v
+        m = max_value(result(tg, action), d)
         v = min(v, max_value(result(tg, action), d))
         if not prev == v or not current:
             current = action
-        if decision(0.2) and prev == v:
+        if decision(0.2) and m == v:
             current = action
     if d == depth_min - 1:
         game.makemove(current, True)
