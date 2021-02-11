@@ -112,6 +112,7 @@ class ChessBoard:
 
     def printboard(self):
         for y in range(7, -1, -1):
+            print(str(y) + ".", end='')
             for x in range(8):
                 pos = position.position(x, y)
                 temp = self.pieceat(pos)
@@ -122,3 +123,7 @@ class ChessBoard:
                     s = "-" if temp.side < 0 else "+"
                     print(" " + s + temp.getname() + " ", end='')
             print("")
+        print("  ", end='')
+        for i in range(8):
+            print(" ." + str(i) + " ", end='')
+        print("")

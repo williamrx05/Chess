@@ -36,7 +36,7 @@ class ChessGame:
     def startgame(self):
         n = 0
         self.printboard()
-        print(str(n) + ": " + str(self.turn))
+        print("Turn " + str(n) + ": " + str(self.turn) + "'s move")
         while True:
             cmd = input("...")
             if cmd == "q":
