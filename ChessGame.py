@@ -32,6 +32,7 @@ class ChessGame:
         self.board.addpiece(Queen.Queen(+1, position.position(3, 0)))
         self.board.addpiece(Queen.Queen(-1, position.position(3, 7)))
 
+    # Game loop
     def startgame(self):
         n = 0
         self.printboard()
@@ -42,7 +43,6 @@ class ChessGame:
                 print(str(self.turn) + " resigned")
                 break
             else:
-                # make move
                 if len(cmd) >= 4 and cmd[0].isdigit() and cmd[1].isdigit() and cmd[2].isdigit() and cmd[3].isdigit():
                     pos1 = position.position(int(cmd[0]), int(cmd[1]))
                     piece = self.board.pieceat(pos1)
@@ -59,6 +59,9 @@ class ChessGame:
                                     self.makemove(m, cmd[4])
                                     self.printboard()
                                     self.switchturn()
+                                    if self.board.ischeckmate(self.turn):
+                                        print("Checkmate. Player {} wins.".format(-self.turn))
+                                        break
                                     n += 1
                                     print(str(n) + ": " + str(self.turn))
                                 else:
@@ -74,6 +77,9 @@ class ChessGame:
                             self.makemove(m)
                             self.printboard()
                             self.switchturn()
+                            if self.board.ischeckmate(self.turn):
+                                print("Checkmate. Player {} wins.".format(-self.turn))
+                                break
                             n += 1
                             print(str(n) + ": " + str(self.turn))
                         else:
@@ -81,11 +87,10 @@ class ChessGame:
                 else:
                     print("Move cannot be parsed")
 
-
-    def getallnextboards(self, m: [move]):
+    def generateboards(self, m: [move]):
         pass
 
-    def getnextboard(self, m: move):
+    def generateboard(self, m: move):
         pass
 
     # Returns all possible moves for one player
@@ -111,6 +116,7 @@ class ChessGame:
     def ismovevalid(self, m: move) -> bool:
         return not self.board.iskingopen(m)
 
+    # Makes a move on board
     def makemove(self, m: move, new: str = "None"):
         self.board.movepiece(m, new)
 
