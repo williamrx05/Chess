@@ -3,34 +3,37 @@ from pieces import Pawn, Bishop, King, Knight, Queen, Rook
 
 
 class ChessGame:
-    def __init__(self):
-        self.board = ChessBoard.ChessBoard()
-        self.turn = 1
-        # Add Pawns
-        for i in range(8):
-            self.board.addpiece(Pawn.Pawn(+1, position.position(i, 1)))
-            self.board.addpiece(Pawn.Pawn(-1, position.position(i, 6)))
-        # Add Rooks
-        self.board.addpiece(Rook.Rook(+1, position.position(0, 0)))
-        self.board.addpiece(Rook.Rook(+1, position.position(7, 0)))
-        self.board.addpiece(Rook.Rook(-1, position.position(0, 7)))
-        self.board.addpiece(Rook.Rook(-1, position.position(7, 7)))
-        # Add Knights
-        self.board.addpiece(Knight.Knight(+1, position.position(1, 0)))
-        self.board.addpiece(Knight.Knight(+1, position.position(6, 0)))
-        self.board.addpiece(Knight.Knight(-1, position.position(1, 7)))
-        self.board.addpiece(Knight.Knight(-1, position.position(6, 7)))
-        # Add Bishops
-        self.board.addpiece(Bishop.Bishop(+1, position.position(2, 0)))
-        self.board.addpiece(Bishop.Bishop(+1, position.position(5, 0)))
-        self.board.addpiece(Bishop.Bishop(-1, position.position(2, 7)))
-        self.board.addpiece(Bishop.Bishop(-1, position.position(5, 7)))
-        # Add Kings
-        self.board.addpiece(King.King(+1, position.position(4, 0)))
-        self.board.addpiece(King.King(-1, position.position(4, 7)))
-        # Add Queens
-        self.board.addpiece(Queen.Queen(+1, position.position(3, 0)))
-        self.board.addpiece(Queen.Queen(-1, position.position(3, 7)))
+    def __init__(self, board: ChessBoard.ChessBoard = None):
+        if not board:
+            self.board = ChessBoard.ChessBoard()
+            self.turn = 1
+            # Add Pawns
+            for i in range(8):
+                self.board.addpiece(Pawn.Pawn(+1, position.position(i, 1)))
+                self.board.addpiece(Pawn.Pawn(-1, position.position(i, 6)))
+            # Add Rooks
+            self.board.addpiece(Rook.Rook(+1, position.position(0, 0)))
+            self.board.addpiece(Rook.Rook(+1, position.position(7, 0)))
+            self.board.addpiece(Rook.Rook(-1, position.position(0, 7)))
+            self.board.addpiece(Rook.Rook(-1, position.position(7, 7)))
+            # Add Knights
+            self.board.addpiece(Knight.Knight(+1, position.position(1, 0)))
+            self.board.addpiece(Knight.Knight(+1, position.position(6, 0)))
+            self.board.addpiece(Knight.Knight(-1, position.position(1, 7)))
+            self.board.addpiece(Knight.Knight(-1, position.position(6, 7)))
+            # Add Bishops
+            self.board.addpiece(Bishop.Bishop(+1, position.position(2, 0)))
+            self.board.addpiece(Bishop.Bishop(+1, position.position(5, 0)))
+            self.board.addpiece(Bishop.Bishop(-1, position.position(2, 7)))
+            self.board.addpiece(Bishop.Bishop(-1, position.position(5, 7)))
+            # Add Kings
+            self.board.addpiece(King.King(+1, position.position(4, 0)))
+            self.board.addpiece(King.King(-1, position.position(4, 7)))
+            # Add Queens
+            self.board.addpiece(Queen.Queen(+1, position.position(3, 0)))
+            self.board.addpiece(Queen.Queen(-1, position.position(3, 7)))
+        else:
+            self.board = board
 
     # Game loop
     def startgame(self):

@@ -6,11 +6,11 @@ class Knight(ChessPiece.ChessPiece):
         super().__init__("H", side, pos, 3)
 
     def ismovevalid(self, m, chessboard) -> bool:
-        if not chessboard.inbounds(m.getnew()):
+        if not chessboard.inbounds(m.getnew()) or not chessboard.pieceat(m.getold()):
             return False
         if (abs(m.xshift()) == 2 and abs(m.yshift()) == 1) or (abs(m.xshift()) == 1 and abs(m.yshift()) == 2):
             temp = chessboard.pieceat(m.getnew())
-            return not temp
+            return not temp or (temp and temp.getside() == -chessboard.pieceat(m.getold()).getside())
         return False
 
     def validmoves(self, chessboard) -> [move]:
