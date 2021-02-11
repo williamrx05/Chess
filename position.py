@@ -3,6 +3,11 @@ class position:
         self.x = x
         self.y = y
 
+    def __eq__(self, other):
+        if isinstance(other, position):
+            return self.x == other.x and self.y == other.y
+        return False
+
     def getx(self):
         return self.x
 

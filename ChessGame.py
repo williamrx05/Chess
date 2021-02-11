@@ -93,9 +93,11 @@ class ChessGame:
     # Returns all possible moves for one player
     def allmoves(self, side: int) -> [move]:
         moves = []
-        for x in range(8):
-            for y in range(8):
-                moves.extend(self.piecemoves(position.position(x, y), side))
+        for piece in self.board.getpieces():
+            moves.extend(self.piecemoves(piece.getpos(), side))
+        # for x in range(8):
+        #     for y in range(8):
+        #         moves.extend(self.piecemoves(position.position(x, y), side))
         return moves
 
     # Returns all possible moves for a piece
