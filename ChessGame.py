@@ -63,7 +63,7 @@ class ChessGame:
                                         print("Checkmate. Player {} wins.".format(-self.turn))
                                         break
                                     n += 1
-                                    print(str(n) + ": " + str(self.turn))
+                                    print("Turn " + str(n) + ": " + str(self.turn) + "'s move")
                                 else:
                                     print("Move is invalid")
                             else:
@@ -81,7 +81,7 @@ class ChessGame:
                                 print("Checkmate. Player {} wins.".format(-self.turn))
                                 break
                             n += 1
-                            print(str(n) + ": " + str(self.turn))
+                            print("Turn " + str(n) + ": " + str(self.turn) + "'s move")
                         else:
                             print("Move is invalid")
                 else:
