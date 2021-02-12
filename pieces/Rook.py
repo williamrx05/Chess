@@ -5,6 +5,12 @@ class Rook(ChessPiece.ChessPiece):
     def __init__(self, side, pos):
         super().__init__("R", side, pos, 5)
 
+    def getASCII(self, side: int):
+        if side == 1:
+            return u'\u2656'
+        else:
+            return u'\u265C'
+
     def ismovevalid(self, m: move, chessboard: ChessBoard) -> bool:
         if not chessboard.inbounds(m.getnew()):
             return False

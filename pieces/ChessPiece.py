@@ -7,6 +7,9 @@ class ChessPiece:
         self.pos = pos
         self.value = value
 
+    def getASCII(self, side):
+        pass
+
     def getvalue(self):
         return self.value
 

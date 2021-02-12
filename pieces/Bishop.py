@@ -5,6 +5,13 @@ class Bishop(ChessPiece.ChessPiece):
     def __init__(self, side, pos):
         super().__init__("B", side, pos, 3)
 
+    def getASCII(self, side: int):
+        if side == 1:
+            return u'\u2657'
+        else:
+            return u'\u265D'
+
+
     def ismovevalid(self, m: move, chessboard: ChessBoard) -> bool:
         if not chessboard.inbounds(m.getnew()):
             return False

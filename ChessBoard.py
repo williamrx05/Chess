@@ -148,18 +148,24 @@ class ChessBoard:
 
     def printboard(self):
         for y in range(7, -1, -1):
-            print(str(y) + ".", end='')
+            print(str(y), end='')
             for x in range(8):
                 pos = position.position(x, y)
                 temp = self.pieceat(pos)
                 if not temp:
                     # print(" " + str(x) + str(y) + " ", end='')
-                    print(" `` ", end='')
+                    if (x + y) % 2 == 0:
+                        print("   ", end='')
+                    else:
+                        print("░░░", end='')
                 else:
-                    s = "-" if temp.side < 0 else "+"
-                    print(" " + s + temp.getname() + " ", end='')
+                    # if (x + y) % 2 == 0:
+                    #     print(" " + temp.getASCII(temp.side) + " ", end='')
+                    # else:
+                    #     print("░" + temp.getASCII(temp.side) + "░", end='')
+                    print(" " + temp.getASCII(temp.side) + " ", end='')
             print("")
-        print("  ", end='')
+        print(" ", end='')
         for i in range(8):
-            print(" ." + str(i) + " ", end='')
+            print(" " + str(i) + " ", end='')
         print("")

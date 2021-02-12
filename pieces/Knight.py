@@ -4,7 +4,11 @@ import ChessBoard, move, position
 class Knight(ChessPiece.ChessPiece):
     def __init__(self, side, pos):
         super().__init__("H", side, pos, 3)
-
+    def getASCII(self, side: int):
+        if side == 1:
+            return u'\u2658'
+        else:
+            return u'\u265E'
     def ismovevalid(self, m, chessboard) -> bool:
         if not chessboard.inbounds(m.getnew()) or not chessboard.pieceat(m.getold()):
             return False

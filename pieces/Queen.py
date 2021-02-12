@@ -5,6 +5,12 @@ class Queen(ChessPiece.ChessPiece):
     def __init__(self, side, pos):
         super().__init__("Q", side, pos, 9)
 
+    def getASCII(self, side: int):
+        if side == 1:
+            return u'\u2655'
+        else:
+            return u'\u265B'
+
     def ismovevalid(self, m: move, chessboard: ChessBoard) -> bool:
         temprook = Rook.Rook(self.side, self.pos)
         tempbishop = Bishop.Bishop(self.side, self.pos)

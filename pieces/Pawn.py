@@ -5,6 +5,12 @@ class Pawn(ChessPiece.ChessPiece):
     def __init__(self, side, pos):
         super().__init__("P", side, pos, 1)
 
+    def getASCII(self, side: int):
+        if side == 1:
+            return u'\u2659'
+        else:
+            return u'\u265F'
+
     def ismovevalid(self, m: move, chessboard: ChessBoard) -> bool:
         if not chessboard.inbounds(m.getnew()):
             return False

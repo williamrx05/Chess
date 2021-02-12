@@ -5,6 +5,12 @@ class King(ChessPiece.ChessPiece):
     def __init__(self, side, pos):
         super().__init__("K", side, pos, 999)
 
+    def getASCII(self, side: int):
+        if side == 1:
+            return u'\u2654'
+        else:
+            return u'\u265A'
+
     def ismovevalid(self, m, chessboard) -> bool:
         if not chessboard.inbounds(m.getnew()):
             return False

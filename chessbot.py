@@ -99,7 +99,12 @@ while True:
     game.printboard()
     if game.getboard().ischeckmate(-1):
         break
-    min_value(game)
+    cmd = input("...")
+    pos1 = position.position(int(cmd[0]), int(cmd[1]))
+    pos2 = position.position(int(cmd[2]), int(cmd[3]))
+    m = move.move(pos1, pos2, True, cmd[4])
+    game.makemove(m, True)
+    # min_value(game)
     game.printboard()
     if game.getboard().ischeckmate(1):
         break
