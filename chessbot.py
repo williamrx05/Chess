@@ -5,8 +5,8 @@ def decision(probability):
     return random.random() < probability
 
 game = ChessGame.ChessGame()
-depth_max = 3
-depth_min = 3
+depth_max = 4
+depth_min = 4
 def result(s: ChessGame.ChessGame, m: move):
     memo = {}
     tb = s.getboard().__deepcopy__(memo)
@@ -33,7 +33,7 @@ def max_value(s: ChessGame.ChessGame, d: int=depth_max, a: int=-9999, b: int=999
     memo = {}
     tb = s.getboard().__deepcopy__(memo)
     tg = ChessGame.ChessGame(tb)
-    if d == 0:
+    if tb.ischeckmate(-1) or tb.ischeckmate(1) or d == 0:
         return value(s.getboard())
     for action in tg.allmoves(1):
         prev = v
@@ -46,7 +46,7 @@ def max_value(s: ChessGame.ChessGame, d: int=depth_max, a: int=-9999, b: int=999
             current = action
         if b <= a:
             break
-    if d == depth_max - 1:
+    if tb.ischeckmate(-1) or tb.ischeckmate(1) or d == depth_max - 1:
         game.makemove(current, True)
     return v
 
@@ -62,7 +62,7 @@ def min_value(s: ChessGame.ChessGame, d: int=depth_min, a: int=-9999, b: int=999
         return value(s.getboard())
     for action in tg.allmoves(-1):
         prev = v
-        m = max_value(result(tg, action), d)
+        m = max_value(result(tg, action), d, a, b)
         v = min(v, m)
         b = min(b, v)
         if not prev == v or not current:
